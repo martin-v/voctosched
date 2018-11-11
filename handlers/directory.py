@@ -2,6 +2,7 @@ from typing import Type
 
 from .base import ImportHandler, ExportHandler
 from .import_handlers import FakeImportHandler, CSVImportHandler, JSONImportHandler, C3DataImportHandler
+from .import_handlers import XMLImportHandler
 from .export_handlers import BasicXMLExportHandler, ExtendedXMLExportHandler
 
 import_handlers = {
@@ -9,6 +10,7 @@ import_handlers = {
     "fake": FakeImportHandler,
     "json": JSONImportHandler,
     "c3data": C3DataImportHandler,
+    "xml": XMLImportHandler,
 }
 
 export_handlers = {
