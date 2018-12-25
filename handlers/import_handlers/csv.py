@@ -43,7 +43,11 @@ class CSVImportHandler(ImportHandler):
                 speakers = {}
                 for pair in row['Speakers'].split('|'):
                     uid, _, name = pair.partition(":")
-                    speakers[int(uid)] = name
+                    try:
+                        speakers[int(uid)] = name
+                    except ValueError:
+                        from random import randint
+                        speakers[randint(0, 2**31)] = uid
                 schedule.add_event(int(row['Day']), row['Room'], Event(
                     uid=row['ID'],
                     date=parse_datetime(row['Date'] + 'T' + row['Start'] + ':00'),
